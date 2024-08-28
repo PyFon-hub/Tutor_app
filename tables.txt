@@ -1,0 +1,27 @@
+CREATE DATABASE tutoring;
+
+CREATE TABLE upcoming_tutoring_sessions (
+    id SERIAL PRIMARY KEY,
+    date DATE NOT NULL,
+    day VARCHAR(100) NOT NULL,
+    time TIME NOT NULL,
+    subject VARCHAR(100) NOT NULL,
+    tutor_id INTEGER REFERENCES tutors(id),
+    student_id INTEGER REFERENCES students(id)
+);
+
+CREATE TABLE past_tutoring_sessions (
+    id SERIAL PRIMARY KEY,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    subject VARCHAR(100) NOT NULL,
+    tutor_id INTEGER REFERENCES tutors(id),
+    student_id INTEGER REFERENCES students(id)
+);
+
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100)
+);
